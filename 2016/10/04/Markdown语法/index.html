@@ -1,0 +1,605 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="个人博客的生成过程:1.hexo s -g  #生成静态网页,启动服务器,进行本地预览2.创建文章    hexo new “文章题目”    生成md文件(blog/source/_posts/)3.编写md文件4.hexo d发布更新博客,将本地文件发布到github上
+
+标题设置在Markdown当中设置标题，有两种方式：第一种：通过在文字下方添加“=”和“-”，他们分别表示一级标题和二级标">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Markdown语法">
+<meta property="og:url" content="http://yoursite.com/2016/10/04/Markdown语法/index.html">
+<meta property="og:site_name" content="本初子午">
+<meta property="og:description" content="个人博客的生成过程:1.hexo s -g  #生成静态网页,启动服务器,进行本地预览2.创建文章    hexo new “文章题目”    生成md文件(blog/source/_posts/)3.编写md文件4.hexo d发布更新博客,将本地文件发布到github上
+
+标题设置在Markdown当中设置标题，有两种方式：第一种：通过在文字下方添加“=”和“-”，他们分别表示一级标题和二级标">
+<meta property="og:image" content="https://ss0.baidu.com/73t1bjeh1BF3odCf/it/u=4273712126,1108790005&fm=85&s=A0F27223743325942A6CB0990300C093">
+<meta property="og:image" content="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2803299610,3273394112&fm=116&gp=0.jpg">
+<meta property="og:updated_time" content="2016-10-04T15:34:44.798Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Markdown语法">
+<meta name="twitter:description" content="个人博客的生成过程:1.hexo s -g  #生成静态网页,启动服务器,进行本地预览2.创建文章    hexo new “文章题目”    生成md文件(blog/source/_posts/)3.编写md文件4.hexo d发布更新博客,将本地文件发布到github上
+
+标题设置在Markdown当中设置标题，有两种方式：第一种：通过在文字下方添加“=”和“-”，他们分别表示一级标题和二级标">
+<meta name="twitter:image" content="https://ss0.baidu.com/73t1bjeh1BF3odCf/it/u=4273712126,1108790005&fm=85&s=A0F27223743325942A6CB0990300C093">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/10/04/Markdown语法/"/>
+
+  <title> Markdown语法 | 本初子午 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">本初子午</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                Markdown语法
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-10-04T17:28:25+08:00" content="2016-10-04">
+              2016-10-04
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>个人博客的生成过程:<br>1.hexo s -g  #生成静态网页,启动服务器,进行本地预览<br>2.创建文章    hexo new “文章题目”    生成md文件(blog/source/_posts/)<br>3.编写md文件<br>4.hexo d发布更新博客,将本地文件发布到github上</p>
+<ol>
+<li>标题设置<br>在Markdown当中设置标题，有两种方式：<br>第一种：通过在文字下方添加“=”和“-”，他们分别表示一级标题和二级标题。<br>第二种：在文字开头加上 “#”，通过“#”数量表示几级标题。（一共只有1~6级标题，1级标题字体最大）</li>
+</ol>
+<h1 id="Markdown一级标题"><a href="#Markdown一级标题" class="headerlink" title="Markdown一级标题"></a>Markdown一级标题</h1><h2 id="Markdown二级标题"><a href="#Markdown二级标题" class="headerlink" title="Markdown二级标题   "></a>Markdown二级标题   </h2><ol>
+<li>块注释（blockquote）<br>通过在文字开头添加“&gt;”表示块注释。（当&gt;和文字之间添加五个blank时，块注释的文字会有变化。）<blockquote>
+<p>要注释的文字</p>
+<pre><code>前面有5个空格
+</code></pre></blockquote>
+</li>
+<li>斜体<br>将需要设置为斜体的文字两端使用1个“*”或者“_”夹起来<ul>
+<li>文字倾斜 *<br><em>文字倾斜</em></li>
+</ul>
+</li>
+<li>粗体<br>将需要设置为斜体的文字两端使用2个“<em>”或者“_”夹起来<br><em>* 文字加粗 </em></em><br><strong>文字加粗</strong><br><del>在文字上添加删除线</del><br>水平线</li>
+</ol>
+<hr>
+<ol>
+<li>无序列表<br>在文字开头添加(<em>, +, and -)实现无序列表。但是要注意在(</em>, +, and -)和文字之间需要添加空格。（建议：一个文档中只是用一种无序列表的表示方式）</li>
+</ol>
+<ul>
+<li>无序列表1星号</li>
+</ul>
+<ul>
+<li>无序列表2加号</li>
+</ul>
+<ul>
+<li>无序列表3减号</li>
+</ul>
+<ol>
+<li>有序列表<br>使用数字后面跟上句号。（还要有空格）<ol>
+<li>有序列表</li>
+</ol>
+</li>
+<li>链接（Links）<br>Markdown中有两种方式，实现链接，分别为内联方式和引用方式。<br>内联方式：This is an <a href="http://example.com/" target="_blank" rel="external">example link</a>.<br>引用方式：<br>I get 10 times more traffic from <a href="http://google.com/" title="Google" target="_blank" rel="external">Google</a> than from <a href="http://search.yahoo.com/" title="Yahoo Search" target="_blank" rel="external">Yahoo</a> or <a href="http://search.msn.com/" title="MSN Search" target="_blank" rel="external">MSN</a>.  </li>
+</ol>
+<ol>
+<li>图片（Images）<br>图片的处理方式和链接的处理方式，非常的类似。<br>内联方式：<img src="https://ss0.baidu.com/73t1bjeh1BF3odCf/it/u=4273712126,1108790005&amp;fm=85&amp;s=A0F27223743325942A6CB0990300C093" alt="01.jpg"><br>引用方式：<br><img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=2803299610,3273394112&amp;fm=116&amp;gp=0.jpg" alt="01.jpg"></li>
+</ol>
+<ol>
+<li>代码<br>实现方式有两种：<br>第一种：简单文字出现一个代码框。使用<code>&lt;blockquote&gt;</code>。（<code>不是单引号而是左上角的ESC下面~中的</code>）<br>第二种：大片文字需要实现代码框。使用Tab和四个空格。</li>
+</ol>
+<p>代码块高亮<br><figure class="highlight ruby"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;code&gt;</div></pre></td></tr></table></figure></p>
+<ol>
+<li>脚注（footnote）<br>实现方式如下：<br>hello<a href="hi">^hello</a></li>
+</ol>
+<hr>
+<ol>
+<li>下划线<br>在空白行下方添加三条“-”横线。（前面讲过在文字下方添加“-”，实现的2级标题）</li>
+<li>表格<br>表头  | 表头<br>————- | ————-<br>单元格内容  | 单元格内容<br>单元格内容l  | 单元格内容</li>
+</ol>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/04/奉上一大碗心灵鸡汤/" rel="next" title="奉上一大碗心灵鸡汤[C">
+                <i class="fa fa-chevron-left"></i> 奉上一大碗心灵鸡汤[C
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/04/正则表达式/" rel="prev" title="正则表达式">
+                正则表达式 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="John Doe" />
+          <p class="site-author-name" itemprop="name">John Doe</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Markdown一级标题"><span class="nav-number">1.</span> <span class="nav-text">Markdown一级标题</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#Markdown二级标题"><span class="nav-number">1.1.</span> <span class="nav-text">Markdown二级标题   </span></a></li></ol></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

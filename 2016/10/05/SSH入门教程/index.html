@@ -1,0 +1,668 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="SSH使用指南介绍SSH什么 是SSH？传统的网络服务程序，如：ftp、pop和telnet在本质上都是不安全的，因为它们在网络上用明文传送口令和数据，别有用心的人非 常容易就可以截获这些口令和数据。而且，这些服务程序的安全验证方式也是有其弱点的，就是很容易受到“中间人”（man-in-the-middle）这 种方式的攻击。所谓 “中间人”的攻击方式，就是“中间人”冒充真正的服务器接收你的传给服">
+<meta property="og:type" content="article">
+<meta property="og:title" content="SSH入门教程">
+<meta property="og:url" content="http://yoursite.com/2016/10/05/SSH入门教程/index.html">
+<meta property="og:site_name" content="本初子午">
+<meta property="og:description" content="SSH使用指南介绍SSH什么 是SSH？传统的网络服务程序，如：ftp、pop和telnet在本质上都是不安全的，因为它们在网络上用明文传送口令和数据，别有用心的人非 常容易就可以截获这些口令和数据。而且，这些服务程序的安全验证方式也是有其弱点的，就是很容易受到“中间人”（man-in-the-middle）这 种方式的攻击。所谓 “中间人”的攻击方式，就是“中间人”冒充真正的服务器接收你的传给服">
+<meta property="og:updated_time" content="2016-10-05T09:59:05.549Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="SSH入门教程">
+<meta name="twitter:description" content="SSH使用指南介绍SSH什么 是SSH？传统的网络服务程序，如：ftp、pop和telnet在本质上都是不安全的，因为它们在网络上用明文传送口令和数据，别有用心的人非 常容易就可以截获这些口令和数据。而且，这些服务程序的安全验证方式也是有其弱点的，就是很容易受到“中间人”（man-in-the-middle）这 种方式的攻击。所谓 “中间人”的攻击方式，就是“中间人”冒充真正的服务器接收你的传给服">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/10/05/SSH入门教程/"/>
+
+  <title> SSH入门教程 | 本初子午 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">本初子午</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                SSH入门教程
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-10-05T14:34:53+08:00" content="2016-10-05">
+              2016-10-05
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>SSH使用指南<br>介绍SSH<br>什么 是SSH？<br>传统的网络服务程序，如：ftp、pop和telnet在本质上都是不安全的，因为它们在网络上用明文传送口令和数据，别有用心的人非 常容易就可以截获这些口令和数据。而且，这些服务程序的安全验证方式也是有其弱点的，就是很容易受到“中间人”（man-in-the-middle）这 种方式的攻击。所谓 “中间人”的攻击方式，就是“中间人”冒充真正的服务器接收你的传给服务器的数据，然后再冒充你把数据传给真正的服务器。服务器和你之间的数据传送被“中 间人”一转手做了手脚之后，就会出现很严重的问题。</p>
+<p>SSH的英文全称是Secure SHell。通过使用SSH，你可以把所有传输的数据进行加密，这样“中间人”这种攻击方式就不可能实现了，而且也能够防止DNS和IP欺骗。还有一个额 外的好处就是传输的数据是经过压缩的，所以可以加快传输的速度。SSH有很多功能，它既可以代替telnet，又可以为ftp、pop、甚至ppp提供一 个安全的“通道”。</p>
+<p>最初SSH是由芬兰的一家公司开发的。但是因为受版权和加密算法的限制，现在很多人都转而使用OpenSSH。 OpenSSH是SSH的替代软件，而且是免费的，可以预计将来会有越来越多的人使用它而不是SSH。</p>
+<p>SSH是由客户端和服务端的软件组 成的，有两个不兼容的版本分别是：1.x和2.x。用SSH 2.x的客户程序是不能连接到SSH 1.x的服务程序上去的。OpenSSH 2.x同时支持SSH 1.x和2.x。</p>
+<p>SSH的安全验证是如何工作的<br>从客户端来看，SSH提供两种级别的安全验证。</p>
+<p>第 一种级别（基于口令的安全验证）只要你知道自己帐号和口令，就可以登录到远程主机。所有传输的数据都会被加密，但是不能保证你正在连接的服务器就是你想连 接的服务器。可能会有别的服务器在冒充真正的服务器，也就是受到“中间人”这种方式的攻击。</p>
+<p>第二种级别（基于密匙的安全验证）需要依靠密 匙，也就是你必须为自己创建一对密匙，并把公用密匙放在需要访问的服务器上。如果你要连接到SSH服务器上，客户端软件就会向服务器发出请求，请求用你的 密匙进行安全验证。服务器收到请求之后，先在你在该服务器的家目录下寻找你的公用密匙，然后把它和你发送过来的公用密匙进行比较。如果两个密匙一致，服务 器就用公用密匙加密“质询”（challenge）并把它发送给客户端软件。客户端软件收到“质询”之后就可以用你的私人密匙解密再把它发送给服务器。</p>
+<p>用 这种方式，你必须知道自己密匙的口令。但是，与第一种级别相比，第二种级别不需要在网络上传送口令。</p>
+<p>第二种级别不仅加密所有传送的数据， 而且“中间人”这种攻击方式也是不可能的（因为他没有你的私人密匙）。但是整个登录的过程可能需要10秒。</p>
+<p>安装并测试OpenSSH<br>因 为受到美国法律的限制，在很多Linux的发行版中都没有包括OpenSSH。但是，可以从网络上下载并安装OpenSSH（有关OpenSSH的安装和 配置请参考：<a href="http://www.linuxaid.com.cn/engineer/brimmer/html/OpenSSH.htm）。" target="_blank" rel="external">http://www.linuxaid.com.cn/engineer/brimmer/html/OpenSSH.htm）。</a></p>
+<p>安 装完OpenSSH之后，用下面命令测试一下：</p>
+<p>ssh -l [your accountname on the remote host] [address of the remote host]</p>
+<p>如果OpenSSH工作正常，你会看到下面的提示信息：</p>
+<p>The authenticity of host [hostname] can’t be established.<br>Key fingerprint is 1024 5f:a0:0b:65:d3:82:df:ab:44:62:6d:98:9c:fe:e9:52.<br>Are you sure you want to continue connecting (yes/no)?</p>
+<p>OpenSSH告诉你它不知 道这台主机，但是你不用担心这个问题，因为你是第一次登录这台主机。键入“yes”。这将把这台主机的“识别标记”加到“~/.ssh /know_hosts”文件中。第二次访问这台主机的时候就不会再显示这条提示信息了。</p>
+<p>然后，SSH提示你输入远程主机上你的帐号的口 令。输入完口令之后，就建立了SSH连接，这之后就可以象使用telnet那样使用SSH了。</p>
+<p>SSH的密匙<br>生成你自己的密匙对<br>生 成并分发你自己的密匙有两个好处：</p>
+<p>1) 可以防止“中间人”这种攻击方式</p>
+<p>2) 可以只用一个口令就登录到所有你想登录的服务器上</p>
+<p>用下面的命令可以生成密匙：</p>
+<p>ssh-keygen</p>
+<p>如果 远程主机使用的是SSH 2.x就要用这个命令：</p>
+<p>ssh-keygen –d</p>
+<p>在同一台主机上同时有SSH1和SSH2的 密匙是没有问题的，因为密匙是存成不同的文件的。</p>
+<p>ssh-keygen命令运行之后会显示下面的信息：</p>
+<p>Generating RSA keys: ……………………….ooooooO……ooooooO<br>Key generation complete.<br>Enter file in which to save the key (/home/[user]/.ssh/identity):<br>[按下ENTER就行了]<br>Created directory ‘/home/[user]/.ssh’.<br>Enter passphrase (empty for no passphrase):<br>[输 入的口令不会显示在屏幕上]<br>Enter same passphrase again:<br>[重新输入一遍口令，如果忘记了口令就只能重新生 成一次密匙了]<br>Your identification has been saved in /home/[user]/.ssh/identity.<br>[这是你的私人密匙]<br>Your public key has been saved in /home/[user]/.ssh/identity.pub.<br>The key fingerprint is: 2a:dc:71:2f:27:84:a2:e4:a1:1e:a9:63:e2:fa:a5:89 [user]@[local machine]</p>
+<p>“ssh-keygen –d”做的是几乎同样的事，但是把一对密匙存为（默认情况下）“/home/[user]/.ssh/id_dsa”（私人密匙）和“/home /[user]/.ssh/id_dsa.pub”（公用密匙）。</p>
+<p>现在你有一对密匙了：公用密匙要分发到所有你想用ssh登录的远程主机 上去；私人密匙要好好地保管防止别人知道你的私人密匙。用“ls –l ~/.ssh/identity”或“ls –l ~/.ssh/id_dsa”所显示的文件的访问权限必须是“-rw——-”。</p>
+<p>如果你怀疑自己的密匙已经被别人知道了，不要迟疑 马上生成一对新的密匙。当然，你还要重新分发一次公用密匙。</p>
+<p>分发公用密匙<br>在每一个你需要用SSH连接的远程服务器上，你要在自己 的家目录下创建一个“.ssh”的子目录，把你的公用密匙“identity.pub” 拷贝到这个目录下并把它重命名为“authorized_keys”。然后执行：</p>
+<p>chmod 644 .ssh/authorized_keys</p>
+<p>这一步是必不可少的。如果除了你之外别人对“authorized_keys”文件也有写的权 限，SSH就不会工作。</p>
+<p>如果你想从不同的计算机登录到远程主机，“authorized_keys”文件也可以有多个公用密匙。在这种情 况下，必须在新的计算机上重新生成一对密匙，然后把生成的“identify.pub”文件拷贝并粘贴到远程主机的“authorized_keys”文 件里。当然在新的计算机上你必须有一个帐号，而且密匙是用口令保护的。有一点很重要，就是当你取消了这个帐号之后，别忘了把这一对密匙删掉。</p>
+<p>配 置SSH<br>配置客户端的软件<br>OpenSSH有三种配置方式：命令行参数、用户配置文件和系统级的配置文件（“/etc/ssh /ssh_config”）。命令行参数优先于配置文件，用户配置文件优先于系统配置文件。所有的命令行的参数都能在配置文件中设置。因为在安装的时候没 有默认的用户配置文件，所以要把 “/etc/ssh/ssh_config”拷贝并重新命名为“~/.ssh/config”。</p>
+<p>标准的 配置文件大概是这样的：</p>
+<p>[lots of explanations and possible options listed]</p>
+<h1 id="Be-paranoid-by-default"><a href="#Be-paranoid-by-default" class="headerlink" title="Be paranoid by default"></a>Be paranoid by default</h1><p>Host *<br>ForwardAgent no<br>ForwardX11 no<br>FallBackToRsh no</p>
+<p>还有很多选项的设置可以用“man ssh”查看“CONFIGURATION FILES”这一章。</p>
+<p>配置文件是 按顺序读取的。先设置的选项先生效。</p>
+<p>假定你在www.foobar.com上有一个名为“bilbo”的帐号。而且你要把“ssh- agent”和“ssh-add”结合起来使用并且使用数据压缩来加快传输速度。因为主机名太长了，你懒得输入这么长的名字，用“fbc”作为 “www.foobar.com”的简称。你的配置文件可以是这样的：</p>
+<p>Host *fbc<br>HostName www.foobar.com<br>User bilbo<br>ForwardAgent yes<br>Compression yes</p>
+<h1 id="Be-paranoid-by-default-1"><a href="#Be-paranoid-by-default-1" class="headerlink" title="Be paranoid by default"></a>Be paranoid by default</h1><p>Host *<br>ForwardAgent no<br>ForwardX11 no<br>FallBackToRsh no</p>
+<p>你输入“ssh fbc”之后，SSH会自动地从配置文件中找到主机的全名，用你的用户名登录并且用“ssh-agent”管理的密匙进行安全验证。这样很方便吧！</p>
+<p>用 SSH连接到其它远程计算机用的还是“paranoid（偏执）”默认设置。如果有些选项没有在配置文件或命令行中设置，那么还是使用默认的 “paranoid”设置。</p>
+<p>在我们上面举的那个例子中，对于到www.foobar.com的SSH连接：“ForwardAgent” 和“Compression”被设置为 “Yes”；其它的设置选项（如果没有用命令行参数）“ForwardX11”和“FallBackToRsh”都被设置成“No”。</p>
+<p>其 它还有一些需要仔细看一看的设置选项是：</p>
+<p>l CheckHostIP yes</p>
+<p>这个选项用来进行IP地址的检查以防止 DNS欺骗。</p>
+<p>l CompressionLevel</p>
+<p>压缩的级别从“1”（最快）到“9”（压缩率最高）。默认值为 “6”。</p>
+<p>l ForwardX11 yes</p>
+<p>为了在本地运行远程的X程序必须设置这个选项。</p>
+<p>l LogLevel DEBUG</p>
+<p>当SSH出现问题的时候，这选项就很有用了。默认值为“INFO”。</p>
+<p>配置服务端的软件<br>SSH 服务器的配置使用的是“/etc/ssh/sshd_config”配置文件，这些选项的设置在配置文件中已经有了一些说明而且用“man sshd”也可以查看帮助。请注意OpenSSH对于SSH 1.x和2.x没有不同的配置文件。</p>
+<p>在默认的设置选项中需要注意的有：</p>
+<p>l PermitRootLogin yes</p>
+<p>最好把这个选项设置成“PermitRootLogin without-password”，这样“root”用户就不能从没有密匙的计算机上登录。把这个选项设置成“no”将禁止“root”用户登录，只能 用“su”命令从普通用户转成“root”。</p>
+<p>l X11Forwarding no</p>
+<p>把这个选项设置成“yes”允许用户 运行远程主机上的X程序。就算禁止这个选项也不能提高服务器的安全因为用户可以安装他们自己的转发器（forwarder），请参看“man sshd”。</p>
+<p>l PasswordAuthentication yes</p>
+<p>把这个选项设置为“no”只允许用户用基于密匙 的方式登录。这当然会给那些经常需要从不同主机登录的用户带来麻烦，但是这能够在很大程度上提高系统的安全性。基于口令的登录方式有很大的弱点。</p>
+<p>l # Subsystem /usr/local/sbin/sftpd</p>
+<p>把最前面的＃号去掉并且把路径名设置成“/usr/bin /sftpserv”，用户就能使用“sftp”（安全的FTP）了（sftpserv在 sftp软件包中）。因为很多用户对FTP比较熟悉而且“scp”用起来也有一些麻烦，所以“sftp”还是很有用的。而且2.0.7版本以后的图形化的 ftp工具“gftp”也支持“sftp”。</p>
+<p>拷贝文件<br>用“scp”拷贝文件<br>SSH提供了一些命令和shell用来登录 远程服务器。在默认情况下它不允许你拷贝文件，但是还是提供了一个“scp”命令。</p>
+<p>假定你想把本地计算机当前目录下的一个名为 “dumb”的文件拷贝到远程服务器www.foobar.com上你的家目录下。而且你在远程服务器上的帐号名为“bilbo”。可以用这个命令：</p>
+<p>scp dumb bilbo@www.foobar.com:.</p>
+<p>把文件拷贝回来用这个命令：</p>
+<p>scp bilbo@www.foobar.com:dumb .</p>
+<p>“scp”调用SSH进行登录，然后拷贝文件，最后调用SSH关闭这个连接。</p>
+<p>如 果在你的“~/.ssh/config”文件中已经为www.foobar.com做了这样的配置：</p>
+<p>Host *fbc<br>HostName www.foobar.com<br>User bilbo<br>ForwardAgent yes</p>
+<p>那么你就可以用“fbc”来代替 “bilbo@www.foobar.com”，命令就简化为“scp dumb fbc:.”。</p>
+<p>“scp”假定你在远程主机上的家目录 为你的工作目录。如果你使用相对目录就要相对于家目录。</p>
+<p>用“scp”命令的“-r”参数允许递归地拷贝目录。“scp”也可以在两个不同 的远程主机之间拷贝文件。</p>
+<p>有时候你可能会试图作这样的事：用SSH登录到www.foobar.com上之后，输入命令“scp [local machine]:dumb .”想用它把本地的“dumb”文件拷贝到你当前登录的远程服务器上。这时候你会看到下面的出错信息：</p>
+<p>ssh: secure connection to [local machine] refused</p>
+<p>之所以会出现这样的出错信息是因为你运行 的是远程的“scp”命令，它试图登录到在你本地计算机上运行的SSH服务程序……所以最好在本地运行“scp”除非你的本地计算机也运行SSH服务程 序。</p>
+<p>用“sftp”拷贝文件<br>如果你习惯使用ftp的方式拷贝文件，可以试着用“sftp”。“sftp”建立用SSH加密的安全 的FTP连接通道，允许使用标准的ftp命令。还有一个好处就是“sftp”允许你通过“exec”命令运行远程的程序。从2.0.7版以后，图形化的 ftp客户软件“gftp”就支持“sftp”。</p>
+<p>如果远程的服务器没有安装sftp服务器软件“sftpserv”，可以把 “sftpserv”的可执行文件拷贝到你的远程的家目录中（或者在远程计算机的$PATH环境变量中设置的路径）。“sftp”会自动激活这个服务软 件，你没有必要在远程服务器上有什么特殊的权限。</p>
+<p>用“rsync”拷贝文件<br>“rsync”是用来拷贝、更新和移动远程和本地文件 的一个有用的工具，很容易就可以用“-e ssh”参数和SSH结合起来使用。“rsync”的一个优点就是，不会拷贝全部的文件，只会拷贝本地目录和远程目录中有区别的文件。而且它还使用很高效 的压缩算法，这样拷贝的速度就很快。</p>
+<p>用“加密通道”的ftp拷贝文件<br>如果你坚持要用传统的FTP客户软件。SSH可以为几乎所有 的协议提供“安全通道”。FTP是一个有一点奇怪的协议（例如需要两个端口）而且不同的服务程序和服务程序之间、客户程序和客户程序之间还有一些差别。</p>
+<p>实 现“加密通道”的方法是使用“端口转发”。你可以把一个没有用到的本地端口（通常大于1000）设置成转发到一个远程服务器上，然后只要连接本地计算机上 的这个端口就行了。有一点复杂是吗？</p>
+<p>其实一个基本的想法就是，转发一个端口，让SSH在后台运行，用下面的命令：</p>
+<p>ssh [user@remote host] -f -L 1234:[remote host]:21 tail -f /etc/motd</p>
+<p>接 着运行FTP客户，把它设置到指定的端口：</p>
+<p>lftp -u [username] -p 1234 localhost</p>
+<p>当 然，用这种方法很麻烦而且很容易出错。所以最好使用前三种方法。</p>
+<p>用SSH设置“加密通道”<br>“加密通道”的基础知识<br>SSH 的“加密通道”是通过“端口转发”来实现的。你可以在本地端口（没有用到的）和在远程服务器上运行的某个服务的端口之间建立“加密通道”。然后只要连接到 本地端口。所有对本地端口的请求都被SSH加密并且转发到远程服务器的端口。当然只有远程服务器上运行SSH服务器软件的时候“加密通道”才能工作。可以 用下面命令检查一些远程服务器是否运行SSH服务：</p>
+<p>telnet [full name of remote host] 22</p>
+<p>如 果收到这样的出错信息：</p>
+<p>telnet: Unable to connect to remote host: Connection refused</p>
+<p>就说明远程服务器上没有运行SSH服务软件。</p>
+<p>端口转发使用这样的命令语法：</p>
+<p>ssh -f [username@remote host] -L [local port]:[full name of remote host]:[remote port] [some command]</p>
+<p>你不仅可以转发多个端口而且可以在“~/.ssh /config”文件中用“LocalForward”设置经常使用的一些转发端口。</p>
+<p>为POP加上“加密通道”<br>你可以用POP协 议从服务器上取email。为POP加上“加密通道”可以防止POP的密码被网络监听器（sniffer）监听到。还有一个好处就是SSH的压缩方式可以 让邮件传输得更快。</p>
+<p>假定你在pop.foobar.com上有一个POP帐号，你的用户名是“bilbo”你的POP口令是 “topsecret”。用来建立SSH“加密通道”的命令是：</p>
+<p>ssh -f -C bilbo@pop.foobar.com -L 1234:pop.foobar.com:110 sleep 5</p>
+<p>（如果要测试，可以把“sleep”的值加到500）。运行这个命令之 后会提示你输入POP口令：</p>
+<p>bilbo@pop.foobar.com’s password:</p>
+<p>输入口令之后就可以用 “telnet”连接到本地的转发端口了。</p>
+<p>telnet localhost 1234</p>
+<p>你会收到远程mail服务器的 “READY”消息。</p>
+<p>当然，这个方法要求你手工输入所有的POP命令，这是很不方便的。可以用Fetchmail（参考how to configure Fetchmail）。Secure POP via SSH mini-HOWTO、man fetchmail和在“/usr/doc/fetchmail-[…]”目录下的Fetchmail的FAQ都提供了一些具体的例子。</p>
+<p>请 注意IMAP协议使用的是不同的端口：IMAP v2的端口号为143而IMAP v3的端口号为220。</p>
+<p>为X加上“加密通道”<br>如 果你打算在本地计算机上运行远程SSH服务器上的X程序，那么登录到远程的计算机上，创建一个名为“~/.ssh/environment”的文件并加上 这一行：</p>
+<p>XAUTHORITY=/home/[remote user name]/.Xauthority</p>
+<p>（如果在远 程主机上你的家目录下不存在“.Xauthority”这个文件，那么当用SSH登录的时候就会自动创建）。</p>
+<p>比如启动一个X程序 （xterm）可以这个命令：</p>
+<p>ssh -f -X -l [remote user name] [remote machine] xterm</p>
+<p>这将在远程运行xterm这个程序。其它的X程序也是用相同的方法。</p>
+<p>为linuxconf加上“加密通道”<br>Linuxconf 是Linux的配置工具，它支持远程管理。Linuxconf的FAQ重说明了如何通过SSH使用linuxconf：</p>
+<p>其命令为：</p>
+<p>remadmin –exec [link_command] linuxconf –guiproto</p>
+<p>如果你想在两台计算机之间用加密的方式传送信 息，那么最好用ssh。命令是：</p>
+<p>remadmin –exec ssh -l [account] linuxconf –guiproto</p>
+<p>这是非常有效的而且运行用图形界面管理计算机。</p>
+<p>这种方法需要在客户端安装linuxconf。其它 的方法还有直接登录到服务器上用“X11Forwarding”或字符界面运行linuxconf。</p>
+<p>为Webmin加上“加密通道”<br>Webmin 是一个新的基于浏览器的配置工具。它运行在1000端口。你可以用SSH的“端口转发”对它进行加密：</p>
+<p>ssh -f -l [remote user name] [remote host] -L 1234:[remote host]:10000 tail -f /etc/motd</p>
+<p>把浏览器指向</p>
+<p><a href="http://localhost:1234" target="_blank" rel="external">http://localhost:1234</a>‘<br>转载自：<a href="http://www.unlinux.com/doc/ssh/20051027" target="_blank" rel="external">http://www.unlinux.com/doc/ssh/20051027</a> /5368.html </p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/05/git使用教程与基本原理/" rel="next" title="git使用教程与基本原理">
+                <i class="fa fa-chevron-left"></i> git使用教程与基本原理
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/05/hello-world/" rel="prev" title="Hello World">
+                Hello World <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="John Doe" />
+          <p class="site-author-name" itemprop="name">John Doe</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#Be-paranoid-by-default"><span class="nav-number">1.</span> <span class="nav-text">Be paranoid by default</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#Be-paranoid-by-default-1"><span class="nav-number">2.</span> <span class="nav-text">Be paranoid by default</span></a></li></ol></div>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>

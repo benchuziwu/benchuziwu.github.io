@@ -1,0 +1,695 @@
+<!doctype html>
+
+
+
+  
+
+
+<html class="theme-next muse use-motion">
+<head>
+  <meta charset="UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+
+
+<meta http-equiv="Cache-Control" content="no-transform" />
+<meta http-equiv="Cache-Control" content="no-siteapp" />
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+  <link href="/vendors/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+
+
+
+
+  
+  
+  
+  
+
+  
+    
+    
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+    
+    
+    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
+  
+
+
+
+
+
+
+<link href="/vendors/font-awesome/css/font-awesome.min.css?v=4.4.0" rel="stylesheet" type="text/css" />
+
+<link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
+
+
+  <meta name="keywords" content="Hexo, NexT" />
+
+
+
+
+
+
+
+
+  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.0.1" />
+
+
+
+
+
+
+<meta name="description" content="1、什么是GIT
+Git是一个强调速度的分布式版本控制软件和源代码管理系统（SCM，source code management）。Git最初是由Linus Torvalds为内核开发而设计的管理软件。自从Git推出以来，已经被很多开源项目所采纳。每一个Git工作目录是一个带有完全历史记录和版本信息的仓库，不依赖于网络和中央服务器。Git是一个免费的开源软件，遵从GNU v2协议。
+Git这个词在">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git使用教程与基本原理">
+<meta property="og:url" content="http://yoursite.com/2016/10/05/git使用教程与基本原理/index.html">
+<meta property="og:site_name" content="本初子午">
+<meta property="og:description" content="1、什么是GIT
+Git是一个强调速度的分布式版本控制软件和源代码管理系统（SCM，source code management）。Git最初是由Linus Torvalds为内核开发而设计的管理软件。自从Git推出以来，已经被很多开源项目所采纳。每一个Git工作目录是一个带有完全历史记录和版本信息的仓库，不依赖于网络和中央服务器。Git是一个免费的开源软件，遵从GNU v2协议。
+Git这个词在">
+<meta property="og:image" content="http://img.blog.csdn.net/20130528155930330">
+<meta property="og:image" content="http://img.blog.csdn.net/20130528155959889">
+<meta property="og:image" content="http://img.blog.csdn.net/20130528160018357">
+<meta property="og:updated_time" content="2016-10-05T06:29:50.124Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="git使用教程与基本原理">
+<meta name="twitter:description" content="1、什么是GIT
+Git是一个强调速度的分布式版本控制软件和源代码管理系统（SCM，source code management）。Git最初是由Linus Torvalds为内核开发而设计的管理软件。自从Git推出以来，已经被很多开源项目所采纳。每一个Git工作目录是一个带有完全历史记录和版本信息的仓库，不依赖于网络和中央服务器。Git是一个免费的开源软件，遵从GNU v2协议。
+Git这个词在">
+<meta name="twitter:image" content="http://img.blog.csdn.net/20130528155930330">
+
+
+
+<script type="text/javascript" id="hexo.configuration">
+  var NexT = window.NexT || {};
+  var CONFIG = {
+    scheme: 'Muse',
+    sidebar: {"position":"left","display":"post"},
+    fancybox: true,
+    motion: true,
+    duoshuo: {
+      userId: 0,
+      author: 'Author'
+    }
+  };
+</script>
+
+
+
+
+  <link rel="canonical" href="http://yoursite.com/2016/10/05/git使用教程与基本原理/"/>
+
+  <title> git使用教程与基本原理 | 本初子午 </title>
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage" lang="">
+
+  
+
+
+
+
+
+
+
+
+
+
+  
+  
+    
+  
+
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
+    <div class="headband"></div>
+
+    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-meta ">
+  
+
+  <div class="custom-logo-site-title">
+    <a href="/"  class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <span class="site-title">本初子午</span>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+  <p class="site-subtitle"></p>
+</div>
+
+<div class="site-nav-toggle">
+  <button>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+    <span class="btn-bar"></span>
+  </button>
+</div>
+
+<nav class="site-nav">
+  
+
+  
+    <ul id="menu" class="menu">
+      
+        
+        <li class="menu-item menu-item-home">
+          <a href="/" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
+            
+            Startseite
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
+            
+            Archiv
+          </a>
+        </li>
+      
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags" rel="section">
+            
+              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
+            
+            Tags
+          </a>
+        </li>
+      
+
+      
+    </ul>
+  
+
+  
+</nav>
+
+ </div>
+    </header>
+
+    <main id="main" class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          <div id="content" class="content">
+            
+
+  <div id="posts" class="posts-expand">
+    
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                git使用教程与基本原理
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">Veröffentlicht am</span>
+            <time itemprop="dateCreated" datetime="2016-10-05T14:23:20+08:00" content="2016-10-05">
+              2016-10-05
+            </time>
+          </span>
+
+          
+
+          
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        <p>1、什么是GIT</p>
+<p>Git是一个强调速度的分布式版本控制软件和源代码管理系统（SCM，source code management）。Git最初是由Linus Torvalds为内核开发而设计的管理软件。自从Git推出以来，已经被很多开源项目所采纳。每一个Git工作目录是一个带有完全历史记录和版本信息的仓库，不依赖于网络和中央服务器。Git是一个免费的开源软件，遵从GNU v2协议。</p>
+<p>Git这个词在英语中的原意是很笨拙，没用的人。Linus自嘲说：“我是一个任性的笨蛋，所以我把我的所有的项目的名字都和我很相似。第一个是Linux，现在是Git。”Git的帮助文档中描述Git为：笨拙的内容跟踪者（the stupid content tracker）。(翻译自WIKI)</p>
+<p>关于开发Git的一些历史由来，可以看看这个网站：<a href="https://lkml.org/lkml/2005/4/6/121" target="_blank" rel="external">https://lkml.org/lkml/2005/4/6/121</a></p>
+<p>2、为什么要用GIT</p>
+<pre><code>更顺畅的工作流程，开发过程中，完全可以离线操作
+快速，Git分布式架构使得本地仓库包含所有的历史版本信息，你可以在不同的版本之间快速切换
+弹性的本地分支，在svn下，你建一个分支需要把源代码复制到另外一个文件夹，而在Git下，创建分支的代价是非常小的，只需一条命令
+仓库目录结构简洁，用Git复制一个项目，只会在项目根目录创建一个.git的目录，而其他目录很干净
+内容按元数据方式存储，所有的版本信息都位于.git目录下
+完整性好，更易于协作开发
+用户群大，现在已经有成千上万个开源项目采用Git来做项目管理，github上更是有无数个代码仓库
+</code></pre><p>3、GIT安装与配置</p>
+<p>a) 安装</p>
+<p>1.从源码安装</p>
+<p>在安装之前，你必须保证以下几个依赖包已经安装在你的系统上：curl, zlib, openssl, expat, libiconv。如果你的系统是Ubuntu，你可以这样安装：</p>
+<p>apt-get install curl-devel expat-devel gettext-devel openssl-devel zlib-devel</p>
+<p>当所有的依赖项已经解决，就可以从<a href="http://git-scm.com/download上下载Git的源码，然后编译安装，具体命令如下：" target="_blank" rel="external">http://git-scm.com/download上下载Git的源码，然后编译安装，具体命令如下：</a></p>
+<p>tar -zxf git-1.<em>.</em>.*.tar.gz</p>
+<p>cd git-1.<em>.</em></p>
+<p>make prefix=/usr/local all</p>
+<p>sudo make prefix=/usr/local install</p>
+<p>2.在Linux上安装</p>
+<p>如果你的系统是Linux或者Fedora，你可以通过以下命令直接安装Git：</p>
+<p>yum install git-core (fedora)</p>
+<p>apt-get install git-core (ubuntu)</p>
+<p>3.在Windows上安装</p>
+<p>尽管Git是发源于Linux，但现在Windows上也有能够正常使用Git，只不过不支持中文，在Windows下所有的中文都显示问号，另外还有一些功能上的BUG。所以建议还是在Linux上去使用Git，如果你不得不工作在Windows上，你可以到<a href="http://msysgit.github.com/上下载msysgit的最新版，安装过程和其他Windows程序差不多，基本上点下一步就OK了。Msysgit默认会安装git" target="_blank" rel="external">http://msysgit.github.com/上下载msysgit的最新版，安装过程和其他Windows程序差不多，基本上点下一步就OK了。Msysgit默认会安装git</a> bash和git GUI这两个程序，一般用git bash就可以了，它支持常用的命令。如果对Linux命令行不熟，你也可以用用git GUI，但功能有限制。</p>
+<p>b) 第一次使用GIT</p>
+<p>在你安装好Git之后，你需要修改一些配置，才能正常使用Git。</p>
+<p>Git通过“git config”命令来配置Git，这个命令有2个选项：–system, –global, 加上默认选项，分别对应Git上3级配置文件。第一个是/etc/gitconfig文件，和–system对应，这是全局配置文件，修改这个文件，将会影响系统上所有的用户，所有的仓库。第二个是你家目录下的/.gitconfig文件，与–global对应，修改它会对你当前用户的所有仓库产生影响。第三个是你仓库中的.git/.gitconfig文件，这是“git config”默认修改的配置文件，它只会对你当前仓库产生影响。</p>
+<p>在第一次使用Git时，你需要告诉你的协同开发者，你是谁以及你的邮箱，在你提交的时候，Git需要这两个信息。具体通过以下命令设置：</p>
+<p>git config –global user.name “Test OSS”</p>
+<p>git config –global user.email oss.lzu.edu.cn@gmail.com</p>
+<p>当然你也可以不用–global选项，但这意味这你在每一个仓库中都要这样设置。</p>
+<p>同时，你也可以指定你的编辑器，你的Diff工具：</p>
+<p>git config –global core.editor vim</p>
+<p>git config –global merge.tool vimdiff</p>
+<p>你还可以通过”git config –list”命令来查看你的设置。</p>
+<p>当你把Git设置好之后，如果你要和从Git服务器上获得仓库，或者向Git服务器提交你的代码（比如github），你可能需要生成你自己的ssh密钥对。Git支持4种与服务器端通信的协议：git、http、ssh和https。其中git只是一个只读协议，也就是说你只可以从服务器端获取仓库，但是你不能提交你自己的代码。而http和https用的很少，大部分都只支持ssh协议和Git协议。</p>
+<p>当你通过ssh协议与远端服务器进行通信的时候，你可以通过以下命令生成ssh密钥对：</p>
+<p>ssh-keygen -t rsa</p>
+<p>如果你没有指定密钥名称和存放路径的话，它默认把两个不对称密钥放在你的家目录下的.ssh目录下，密钥文件默认名称为id_rsa和id_rsa.pub，前者是私钥，后者是公钥。中间可能会要你设定访问密钥密码，这个可以设，可以不设，但为了安全考虑，还是建议你设一个访问密码。否则，意味着任何持有你密钥的人都可以使用该密钥。</p>
+<p>然后把你的公钥发给Git仓库管理员，然后你就可以通过ssh协议来访问服务器端，期间程序会自动进行密钥对匹配，如果你设了访问密码，你可能需要输入密码。</p>
+<p>更多关于ssh的内容，请访问这里：<a href="http://www.freebsd.org/doc/zh_CN/books/handbook/openssh.html" target="_blank" rel="external">http://www.freebsd.org/doc/zh_CN/books/handbook/openssh.html</a></p>
+<p>这些设定完之后，你可以通过获得任何一个公开的代码仓库来检测你的git是否工作正常。比如下面这个：</p>
+<p>git clone git://git2.kernel.org/pub/scm/git/git.git</p>
+<p>4、GIT仓库</p>
+<p>Git做为一个资源管理和跟踪系统，如果想要把自己的文件托管在Git上，那么首先你得让Git知道你需要管理的文件在哪。比如说现在我有一个项目，它在test文件夹里，我想让Git管理这个项目，这个时候你需进入到这个目录，然后运行“git init”命令。这个时候Git就会在该目录下生成一个.git的隐藏目录，Git用来进行版本控制和内容跟踪的所有文件都在该文件夹下。</p>
+<p>处于git跟踪下的文件只具有三种状态：</p>
+<pre><code>Modified(working directory)：被修改过的文件
+Staged(staging area)：通过git add添加到暂存区域的文件
+Committed(git directory)：通过git commit提交到仓库的文件
+</code></pre><p>所以，一般的git工作流程可能是这样：修改过某些文件，然后把这些文件添加都暂缓区，再提交到仓库中形成一个版本或快照，最后提交到git服务器上。而在中间，可能伴随着分支管理，分支切换，撤消与合并。</p>
+<p>可能有些人会觉得很奇怪，为什么git会有暂存区域这个概念，直接提交到仓库中不就ok了。其实这是git为了做版本控制用的，试想如果没有暂存区域，每修改一个文件，就会形成一个版本，太过频繁，不易于管理。暂存区域其实就是下一个版本的文件清单，你可以自由控制该往仓库中提交什么文件，这也可以避免在一个版本中包含一些中间文件，比如编译后的文件。<br><img src="http://img.blog.csdn.net/20130528155930330" alt="01.jpg"><br><img src="http://img.blog.csdn.net/20130528155959889" alt="02.jpg"><br><img src="http://img.blog.csdn.net/20130528160018357" alt="03.jpg"></p>
+<p>5、GIT基本流程</p>
+<p>1.初始化仓库</p>
+<p>初始化仓库有两种情况，一种是直接在一个空目录里建立一个项目，这时候你可以这样干：</p>
+<p>git init</p>
+<p>另一种是从其他机器复制一个仓库，比如这样：</p>
+<p>git clone git://git2.kernel.org/pub/scm/git/git.git (远程仓库)</p>
+<p>git clone <a href="https://github.com/jQuery/jquery.git" target="_blank" rel="external">https://github.com/jQuery/jquery.git</a> (远程仓库)</p>
+<p>git clone git@github.com:wengpingbo/MicroBlog.git (远程仓库)</p>
+<p>git clone /home/oss/test.git (本地仓库)</p>
+<p>第一次从服务器上复制一个仓库，可能比较慢，因为git要把所有的历史记录和版本全部复制下来，这也算git的一个弊端吧！</p>
+<p>复制完后，就会在当前目录下生成一个工作目录，名字以仓库名字命名。如果你不想指定目录，那就在上面的命令后加一个目录就ok了。比如我想把test仓库放到oss仓库中：git clone /home/oss/test.git oss</p>
+<p>之后，你就可以开始你的工作啦！</p>
+<p>2.添加文件</p>
+<p>在编辑了几个文档之后，你可能突然想起来，好像文件还没有让git跟踪。Git并不会实时的跟踪你的文件，只在你明确让它记录你的文件时，它才会把指定的文件的当前状态记录到仓库中去，然后又撒手不管了。我想这就是说git笨的原因吧。这个时候，你需要手动添加你的文件当暂存区域：</p>
+<p>git add filename1 filename2</p>
+<p>如果你懒得一个一个加，你可以试试这个：</p>
+<p>git add -A</p>
+<p>它会把当前目录下所有的文件都添加到暂存区域。</p>
+<p>3.添加一个版本</p>
+<p>在添加完文件后，你可能觉得应该创建一个commit了。</p>
+<p>git commit</p>
+<p>怎么样？是不是有点不对劲，好像这个命令并没有按你想象的那样跳出一个提交成功的提示，而是直接跑到了你在配置中指定的编辑器中了。仔细看一下，原来是让你给这个版本做一些备注，随便写点什么，然后保存退出就ok了。如果你不想这么麻烦，可以这么干：</p>
+<p>git commit -m ‘initial version’</p>
+<p>可能你觉得之前讲的太罗嗦了，提交一个commit还这么麻烦，其实有一个捷径可以使你跳过添加文件这个过程：</p>
+<p>git commit -a -m ‘initial version’</p>
+<p>大功告成，这个命令会把之前所有的已经添加的文件都加入到这个版本中。</p>
+<p>可能你又有疑问了，之前添加的文件不是自动会加入到下一个版本中吗，问什么还加这个-a参数？</p>
+<p>其实git add命令只是把指定文件的当前状态添加到暂存区域，并不代表一个文件一旦添加，就会一直存在每个版本中。如果你添加一个文件后对这个又进行了修改，在你commit时候，只会commit这个文件添加时的状态，不会把之后的修改也commit进去，除非你再次添加。</p>
+<p>4.推送变更</p>
+<p>在你commit完之后，你可能想把自己的代码提交到github或者其他git服务器上，与他人交流共享，这时候就需要和远程服务器打交道了。</p>
+<p>如果你是在本地建立起的仓库，默认情况下是没有任何服务器地址的，如果你是从其他服务器复制过来的仓库，这个服务器地址会自动添加到你的仓库中，你可以这样查看：</p>
+<p>git remote -v</p>
+<p>如果只输入”git remote”，就只会列出服务器端的别名，不会列出地址来。</p>
+<p>一个仓库可以有多个服务器地址，这就意味着，你可以从不同的人手中复制同一个仓库，但这并不会打乱你自己的分支，哪怕双方的分支名字都一样。假如你现在在和另外两个人做同一个项目中的同一个分支，你发现A的一个模块正是你想要的，你想把他的代码合并到你现在的版本中，这时候你可以这样做：</p>
+<p>git remote add code_a git://url/test.git  //添加对方的地址,code_a是别名</p>
+<p>git fetch code_a  //复制对方的仓库到本地，但不合并，git pull会自动合并</p>
+<p>git merge code_a/master //把对方master分支合并到自己当前版本下</p>
+<p>合并完之后，你可能想提交你的代码到其他的服务器上，这时候你可以先把要提交的服务器地址添加进来，然后这样做：</p>
+<p>git push origin master</p>
+<p>上面的命令就是把自己master的分支提交到名字为origin的服务器上</p>
+<p>5.创建并管理分支</p>
+<p>在做项目的时候，你可能会想写一些扩展性的功能，或者做一些小实验，但是你又不想影响你现在的项目。这时候，你可以创建一个分支，然后在这个分支里写东西，当觉得不好的时候，你可以把这个分支删除掉，对你之前的主分支没有任何影响。或者你觉得这个新特性超出了自己的预想，可以合并到主分支里，这时候你只要把工作转回主分支，然后合并分支，最后删除分支，然后就跟那个分支没创建一样。具体操作如下：</p>
+<p>git branch test  //创建一个test分支</p>
+<p>git checkout test  //转到test分支</p>
+<p>edit something…commit something…</p>
+<p>git checkout master  //转到master分支</p>
+<p>git merge test  //合并test分支</p>
+<p>git checkout -b test2  //创建test2分支，并转到test2分支</p>
+<p>git branch -d test //删除test分支</p>
+<p>git branch  //列出分支列表</p>
+<p>git branch -v  //列出分支列表和当前commit</p>
+<p>Git merge的实质是把两个版本合在一起，然后在当前分支创建一个新的commit，如果你在两个分支的同一个文件的同一个地方都做了修改，这时候merge就会失败，git就不会自动创建一个新的commit，而是直接停住。你需要手动修改这些冲突的文件，选择这两个分支中的一个版本，或者自己重写这个部分，然后手动添加这些文件到暂存区域，再commit一下就ok了。要查看哪些文件冲突了，可以用”git status”查看。</p>
+<p>6.撤消改动</p>
+<p>是人就会犯错。当你执行某个命令之后，突然发现，自己写错了，或者漏了一个文件，这时候怎么办？</p>
+<p>如果你提交得太早，忘了添加某些文件，你可以这样做：</p>
+<p>git commit -m ‘add something ’</p>
+<p>git add file1</p>
+<p>git commit –amend</p>
+<p>最后一个命令会把你当前暂存区域最为上一次的commit。如果你commit以后，马上amend，这时候git会直接跳到编辑commit备注里面，这样你可以修改你上次commit的备注。</p>
+<p>如果你添加了不该添加的文件，你可以这样挽回：</p>
+<p>git add . //把所有的文件都添加进去</p>
+<p>git reset HEAD readme  //把readme文件从暂存区域去除</p>
+<p>如果你发现你编辑错了一个文件，你想把它恢复到上一个版本的状态，这时候你可以这样：</p>
+<p>git checkout – filename1 //只撤消这一个文件</p>
+<p>如果你觉得这个版本糟糕透了，想完全回滚到上一个版本，你可以干如下事情：</p>
+<p>git reset –hard HEAD^</p>
+<p>HEAD是指向当前版本，^指当前版本的父版本，这个操作无法撤消。你可以把–hard换成–soft，这只会回退commit信息。还有一个–mixed默认选项，大家可以参考官方文档，查看这3个选项的具体区别。</p>
+<p>6、GIT常用命令</p>
+<p>Git add</p>
+<p>Git clone</p>
+<p>Git commit</p>
+<p>Git push</p>
+<p>Git checkout</p>
+<p>Git reset</p>
+<p>Git pull</p>
+<p>Git status</p>
+<p>Git branch</p>
+<p>//advanced</p>
+<p>Git tag</p>
+<p>Git log</p>
+<p>Git merge</p>
+<p>7、学习GIT相关资料</p>
+<p>《pro git》 ：<a href="http://git-scm.com/book/zh" target="_blank" rel="external">http://git-scm.com/book/zh</a></p>
+<p>《git magic》 ：<a href="http://www.csc.kth.se/utbildning/kth/kurser/DD2385/material/gitmagic.pdf" target="_blank" rel="external">http://www.csc.kth.se/utbildning/kth/kurser/DD2385/material/gitmagic.pdf</a></p>
+<p>Git manual ：<a href="http://git-scm.com/docs" target="_blank" rel="external">http://git-scm.com/docs</a></p>
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <div>
+      
+        
+
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
+            
+              <a href="/2016/10/04/Mysql常用命令行操作/" rel="next" title="Mysql常用命令行操作">
+                <i class="fa fa-chevron-left"></i> Mysql常用命令行操作
+              </a>
+            
+          </div>
+
+          <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/10/05/SSH入门教程/" rel="prev" title="SSH入门教程">
+                SSH入门教程 <i class="fa fa-chevron-right"></i>
+              </a>
+            
+          </div>
+        </div>
+      
+
+      
+      
+    </footer>
+  </article>
+
+
+
+    <div class="post-spread">
+      
+    </div>
+  </div>
+
+
+          </div>
+          
+
+
+          
+  <div class="comments" id="comments">
+    
+  </div>
+
+
+        </div>
+        
+          
+  
+  <div class="sidebar-toggle">
+    <div class="sidebar-toggle-line-wrap">
+      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
+      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
+    </div>
+  </div>
+
+  <aside id="sidebar" class="sidebar">
+    <div class="sidebar-inner">
+
+      
+
+      
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            Inhaltsverzeichnis
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            Übersicht
+          </li>
+        </ul>
+      
+
+      <section class="site-overview sidebar-panel ">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+          <img class="site-author-image" itemprop="image"
+               src="/images/avatar.gif"
+               alt="John Doe" />
+          <p class="site-author-name" itemprop="name">John Doe</p>
+          <p class="site-description motion-element" itemprop="description"></p>
+        </div>
+        <nav class="site-state motion-element">
+          <div class="site-state-item site-state-posts">
+            <a href="/archives">
+              <span class="site-state-item-count">9</span>
+              <span class="site-state-item-name">Artikel</span>
+            </a>
+          </div>
+
+          
+
+          
+
+        </nav>
+
+        
+
+        <div class="links-of-author motion-element">
+          
+        </div>
+
+        
+        
+
+        
+        
+
+      </section>
+
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">Dieser Artikel hat kein Inhaltsverzeichnis</p>
+            
+          </div>
+        </section>
+      
+
+    </div>
+  </aside>
+
+
+        
+      </div>
+    </main>
+
+    <footer id="footer" class="footer">
+      <div class="footer-inner">
+        <div class="copyright" >
+  
+  &copy; 
+  <span itemprop="copyrightYear">2016</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">John Doe</span>
+</div>
+
+<div class="powered-by">
+  Erstellt mit  <a class="theme-link" href="https://hexo.io">Hexo</a>
+</div>
+
+<div class="theme-info">
+  Theme -
+  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
+    NexT.Muse
+  </a>
+</div>
+
+        
+
+        
+      </div>
+    </footer>
+
+    <div class="back-to-top">
+      <i class="fa fa-arrow-up"></i>
+    </div>
+  </div>
+
+  
+
+<script type="text/javascript">
+  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
+    window.Promise = null;
+  }
+</script>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+  
+  <script type="text/javascript" src="/vendors/jquery/index.js?v=2.1.3"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+
+  
+  <script type="text/javascript" src="/vendors/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/velocity/velocity.ui.min.js?v=1.2.1"></script>
+
+  
+  <script type="text/javascript" src="/vendors/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/utils.js?v=5.0.1"></script>
+
+  <script type="text/javascript" src="/js/src/motion.js?v=5.0.1"></script>
+
+
+
+  
+  
+
+  
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
+
+  
+
+
+  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.0.1"></script>
+
+
+
+  
+
+
+
+  
+
+
+
+
+  
+  
+
+  
+
+  
+
+  
+
+</body>
+</html>
